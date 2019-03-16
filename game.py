@@ -55,7 +55,7 @@ while continuously_prompt:
     else:
         if player_guess == random_number:
             you_win_message(guess_attempts)
-            continuously_prompt = False
+            break
         if player_guess > random_number:
             print("The number is too high")
             guess_attempts += 1
