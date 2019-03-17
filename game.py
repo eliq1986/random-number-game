@@ -31,37 +31,43 @@ def start_game():
     """
     # write your code inside this function.
 player_name = input("Please enter your name ")
-print(f"Welcome to the greatest number guessing game {player_name}")
+print(f"Welcome to the greatest number guessing game {player_name}.\nThe computer at this time is generating a random number between 1 and 10")
 
 # creates random number
 def get_random_number():
-    return random.randint(1,11)
+    return random.randint(1,10)
 
 def you_win_message(number_of_attempts):
     print("Got it")
     print("It only took you {} attempt(s)".format(number_of_attempts))
-    print("That you for playing...")
-
-random_number = get_random_number()
+    print("Thank you for playing {}".format(player_name))
 
 guess_attempts = 1
 
-continuously_prompt = True
-while continuously_prompt:
-    try:
-        player_guess = int(input("Guess a number?"))
-    except ValueError:
-        print("Sorry but that is not a valid entry. Please enter an integer i.e 3")
-    else:
-        if player_guess == random_number:
-            you_win_message(guess_attempts)
-            break
-        if player_guess > random_number:
-            print("The number is too high")
-            guess_attempts += 1
-        elif player_guess < random_number:
-            print("The number is too low")
-            guess_attempts += 1
+def play():
+    guess_attempts = 1
+    continuously_prompt = True
+    random_number = get_random_number()
+    while continuously_prompt:
+        try:
+            player_guess = int(input("Guess a number? "))
+        except ValueError:
+            print("Sorry but that is not a valid entry. Please enter an integer i.e 3")
+        else:
+            if player_guess < 1 or player_guess > 10:
+                print("Sorry but that guess is not a valid option")
+                guess_attempts += 1
+            elif player_guess == random_number:
+                you_win_message(guess_attempts)
+                break
+            elif player_guess > random_number:
+                print("The number is too high")
+                guess_attempts += 1
+            elif player_guess < random_number:
+                print("The number is too low")
+                guess_attempts += 1
+play()
+response_to_continue = input("Would you like to play again?")
 
 
 
