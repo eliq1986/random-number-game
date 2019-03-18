@@ -3,6 +3,7 @@ import random
 
 def start_game():
     guess_attempts = 1
+
     winning_message = """
     You got it!!
     It only took you {} attempt(s).
@@ -10,11 +11,13 @@ def start_game():
     """
 
     player_name = input("Please enter your name ")
+
     print(f"Welcome to the greatest number guessing game {player_name}.\nThe computer at this time is generating a random number between 1 and 10")
 
     # creates random number
     def get_random_number():
         return random.randint(1,10)
+
 
     def you_win_message(number_of_attempts):
         print(winning_message.format(number_of_attempts))
@@ -26,6 +29,7 @@ def start_game():
             play()
         elif response_to_continue.lower() == "no":
             print("Thanks for playing")
+
     def incorrect_guess(phrase, increment_guess):
         print(phrase)
         increment_guess += 1
@@ -50,12 +54,6 @@ def start_game():
                 elif player_guess < random_number:
                     incorrect_guess("The number is too low", guess_attempts)
     play()
-
-
-
-
-
-
 
 
 
