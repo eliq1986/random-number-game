@@ -1,8 +1,8 @@
 import random
+guess_attempts = 1
 
 
 def start_game():
-    guess_attempts = 1
 
     winning_message = """
     You got it!!
@@ -20,7 +20,9 @@ def start_game():
 
 
     def you_win_message(number_of_attempts):
-        print(winning_message.format(number_of_attempts))
+        global guess_attempts
+        print(winning_message.format(guess_attempts))
+        guess_attempts = 1
 
 
     def play_again():
@@ -30,12 +32,12 @@ def start_game():
         elif response_to_continue.lower() == "no":
             print("Thanks for playing")
 
-    def incorrect_guess(phrase, increment_guess):
+    def incorrect_guess(phrase):
         print(phrase)
-        increment_guess += 1
+        global guess_attempts
+        guess_attempts += 1
 
     def play():
-        guess_attempts = 1
         random_number = get_random_number()
         while True:
             try:
@@ -44,15 +46,15 @@ def start_game():
                 print("Sorry but that is not a valid entry. Please enter an integer i.e 3")
             else:
                 if player_guess < 1 or player_guess > 10:
-                    incorrect_guess("Sorry but that guess is not a valid option", guess_attempts)
+                    incorrect_guess("Sorry but that guess is not a valid option")
                 elif player_guess == random_number:
                     you_win_message(guess_attempts)
                     play_again()
                     break
                 elif player_guess > random_number:
-                    incorrect_guess("The number is too high", guess_attempts)
+                    incorrect_guess("The number is too high")
                 elif player_guess < random_number:
-                    incorrect_guess("The number is too low", guess_attempts)
+                    incorrect_guess("The number is too low")
     play()
 
 
