@@ -3,7 +3,17 @@ guess_attempts = 1
 
 
 def start_game():
+
+    def get_high_score():
+        if len(winning_scores) == 0:
+            print("Theres currently no high score...how about setting the bar")
+        else:
+            print("The current score to beat is {}".format(min(winning_scores)))
+
+
+
     winning_scores = []
+
     winning_message = """
     You got it!!
     It only took you {} attempt(s).
@@ -23,7 +33,6 @@ def start_game():
         global guess_attempts
         winning_scores.append(guess_attempts)
         print(winning_message.format(guess_attempts))
-        print(winning_scores)
         guess_attempts = 1
 
 
@@ -47,6 +56,7 @@ def start_game():
 
 
     def play():
+        get_high_score()
         random_number = get_random_number()
         while True:
             try:
@@ -65,7 +75,6 @@ def start_game():
                 elif player_guess < random_number:
                     incorrect_guess("The number is too low")
     play()
-
 
 
 if __name__ == '__main__':
