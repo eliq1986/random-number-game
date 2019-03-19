@@ -3,7 +3,7 @@ guess_attempts = 1
 
 
 def start_game():
-
+    winning_scores = []
     winning_message = """
     You got it!!
     It only took you {} attempt(s).
@@ -14,28 +14,37 @@ def start_game():
 
     print(f"Welcome to the greatest number guessing game {player_name}.\nThe computer at this time is generating a random number between 1 and 10")
 
-    # creates random number
+
     def get_random_number():
         return random.randint(1,10)
 
 
     def you_win_message(number_of_attempts):
         global guess_attempts
+        winning_scores.append(guess_attempts)
         print(winning_message.format(guess_attempts))
+        print(winning_scores)
         guess_attempts = 1
 
 
     def play_again():
-        response_to_continue = input("Would you like to play again? yes/no ")
-        if response_to_continue.lower() == "yes":
-            play()
-        elif response_to_continue.lower() == "no":
-            print("Thanks for playing")
+        while True:
+            response_to_continue = input("Would you like to play again? yes/no ")
+            if response_to_continue.lower() == "yes":
+                play()
+                break
+            elif response_to_continue.lower() == "no":
+                print("Thanks for playing")
+                break
+            else:
+                print("Please enter yes or no")
+
 
     def incorrect_guess(phrase):
         print(phrase)
         global guess_attempts
         guess_attempts += 1
+
 
     def play():
         random_number = get_random_number()
@@ -46,7 +55,7 @@ def start_game():
                 print("Sorry but that is not a valid entry. Please enter an integer i.e 3")
             else:
                 if player_guess < 1 or player_guess > 10:
-                    incorrect_guess("Sorry but that guess is not a valid option")
+                    incorrect_guess("Sorry but that guess is outside the range")
                 elif player_guess == random_number:
                     you_win_message(guess_attempts)
                     play_again()
