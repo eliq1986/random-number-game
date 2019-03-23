@@ -4,8 +4,6 @@
 # Guess A Random Number
 
 import random
-
-# GLOBAL variable
 guess_attempts = 1
 
 
@@ -13,10 +11,10 @@ def start_game():
 
     # Returns high score
     def get_high_score():
-        if winning_scores:
-            print("The current score to beat is {}".format(min(winning_scores)))
-        else:
+        if len(winning_scores) == 0:
             print("Theres currently no high score...how about setting the bar")
+        else:
+            print("The current score to beat is {}".format(min(winning_scores)))
 
 
 
