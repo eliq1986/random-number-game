@@ -1,3 +1,7 @@
+# Create by Elijah Quesada
+# Python3
+# March 20th, 2019
+# Guess A Random Number
 
 import random
 
@@ -65,7 +69,7 @@ def start_game():
 
 
     def play():
-    
+
         get_high_score()
         random_number = get_random_number()
         while True:
