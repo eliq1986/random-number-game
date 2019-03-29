@@ -6,6 +6,7 @@ guess_attempts = 1
 
 
 def start_game():
+    """Uses no arguments and contains all functions"""
 
     def get_high_score():
         if winning_scores:
@@ -18,9 +19,11 @@ def start_game():
     winning_scores = []
 
     winning_message = """
+    ===============================
     You got it!!
     It only took you {} attempt(s).
     Thank you for playing
+    ===============================
     """
 
     player_name = input("Please enter your name ")
@@ -29,10 +32,11 @@ def start_game():
 
 
     def get_random_number():
-        return random.randint(1,10)
+        return random.randint(1, 10)
 
 
     def you_win_message(number_of_attempts):
+
         global guess_attempts
         winning_scores.append(guess_attempts)
         print(winning_message.format(guess_attempts))
@@ -40,6 +44,7 @@ def start_game():
 
 
     def play_again():
+
         while True:
             response_to_continue = input("Would you like to play again? yes/no ")
             if response_to_continue.lower() == "yes":
@@ -53,12 +58,14 @@ def start_game():
 
 
     def incorrect_guess(phrase):
+
         print(phrase)
         global guess_attempts
         guess_attempts += 1
 
 
     def play():
+    
         get_high_score()
         random_number = get_random_number()
         while True:
