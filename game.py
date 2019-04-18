@@ -36,11 +36,12 @@ def start_game():
 
 
     def get_random_number():
+        """ Returns a random number """
         return random.randint(1, 10)
 
 
     def you_win_message(number_of_attempts):
-
+        """ Takes attemps argument and prints winning message """
         global guess_attempts
         winning_scores.append(guess_attempts)
         print(winning_message.format(guess_attempts))
@@ -48,7 +49,7 @@ def start_game():
 
 
     def play_again():
-
+        """Restarts the game if players answers yes"""
         while True:
             response_to_continue = input("Would you like to play again? yes/no ")
             if response_to_continue.lower() == "yes":
@@ -62,14 +63,14 @@ def start_game():
 
 
     def incorrect_guess(phrase):
-
+        """If number guess is incorrect function runs printing to screen."""
         print(phrase)
         global guess_attempts
         guess_attempts += 1
 
 
     def play():
-
+        """Contains general game functionality"""
         get_high_score()
         random_number = get_random_number()
         while True:
