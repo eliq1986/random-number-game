@@ -32,7 +32,10 @@ def start_game():
 
     player_name = input("Please enter your name ")
 
-    print(f"Welcome to the greatest number guessing game {player_name}.\nThe computer at this time is generating a random number between 1 and 10")
+    print("""
+Welcome to the greatest number guessing game {}.
+The computer at this time is generating a random number between 1 and 10
+    """.format(player_name))
 
 
     def get_random_number():
