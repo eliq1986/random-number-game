@@ -6,7 +6,7 @@
 import random
 
 # GLOBAL variable
-guess_attempts = 1
+Guess_Attempts = 1
 
 
 def start_game():
@@ -45,10 +45,10 @@ The computer at this time is generating a random number between 1 and 10
 
     def you_win_message(number_of_attempts):
         """ Takes attemps argument and prints winning message """
-        global guess_attempts
-        winning_scores.append(guess_attempts)
-        print(winning_message.format(guess_attempts))
-        guess_attempts = 1
+        global Guess_Attempts
+        winning_scores.append(Guess_Attempts)
+        print(winning_message.format(Guess_Attempts))
+        Guess_Attempts = 1
 
 
     def play_again():
@@ -68,8 +68,8 @@ The computer at this time is generating a random number between 1 and 10
     def incorrect_guess(phrase):
         """If number guess is incorrect function runs printing to screen."""
         print(phrase)
-        global guess_attempts
-        guess_attempts += 1
+        global Guess_Attempts
+        Guess_Attempts += 1
 
 
     def play():
@@ -85,7 +85,7 @@ The computer at this time is generating a random number between 1 and 10
                 if player_guess < 1 or player_guess > 10:
                     incorrect_guess("Sorry but that guess is outside the range")
                 elif player_guess == random_number:
-                    you_win_message(guess_attempts)
+                    you_win_message(Guess_Attempts)
                     play_again()
                     break
                 elif player_guess > random_number:
